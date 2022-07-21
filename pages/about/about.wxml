@@ -1,0 +1,7 @@
+<!--pages/about/about.wxml-->
+
+
+<button bindtap="getUserProfile" 
+  type="primary"
+  >授权登录
+</button>

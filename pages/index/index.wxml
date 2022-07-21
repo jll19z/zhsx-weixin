@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<swiper autoplay class="item1">
+<swiper-item  wx:for="{{bannerList}}">
+  <image src="{{item.bannerImg}}" class="img-item"></image>
+</swiper-item>
+
+</swiper>
+
+<view class="card">
+
+  <image src="../image/tx.png" class="card-img" wx:if="{{loginflag}}"> </image>
+
+  <view class="card-v" wx:if="{{loginflag}}">
+   <text class="card-text">小雪球会员</text>
+
+   <view class="progress-box">
+  <progress percent="60"  stroke-width="3"  color="red"/>
+    </view> 
+  <text class="card-text-v">再升1级可享【闲时优惠】等8项权益
+  </text>
+  </view>
+
+  <view class="card-login" wx:if="{{!loginflag}}">
+    <button type="warn" bindtap="goLogin">一键登录</button>
+  </view>
+
+</view>
+
+<view class="card-dc">
+  <image src="../image/dc.png" class="dc-img" bindtap="gotoShop"> </image>
+</view>
+
+
+<view class="category">
+<!-- <view class="category-item1" bindtap="goto1">
+  <image src = "../image/g1.png" class="category-item1-image"></image>
+  
+</view>
+<view class="category-item1">
+  <image src = "../image/g2.png" class="category-item1-image"></image>
+  
+</view>
+<view class="category-item1">
+  <image src = "../image/g3.png" class="category-item1-image"></image>
+  
+</view> -->
+</view>

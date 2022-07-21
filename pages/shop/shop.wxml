@@ -1,0 +1,114 @@
+<!--pages/shop/shop.wxml-->
+<view class="page">
+	<view class="header-input" style="background:#efefef;height:100rpx;width:100%;position: fixed;top: 0px;z-index: 99999;">
+		<!-- 搜索条 -->
+		<view class="search-input" style="background-color: white;width: 90%;margin: 10px auto;border-radius: 20px;height:60rpx;" ><!-- bindtap="searchNav" -->
+			<icon size='15' type='search' style="margin: 15rpx 10rpx;float: left;"></icon>
+			<view style="padding-top:6rpx;float: left;width: 90%;font-size: 28rpx;">
+                <input bindblur="Search" placeholder="请输入查询内容"/>
+
+			</view>
+  
+		</view>
+
+	</view>
+	<view class="body">
+		<!-- 左侧滚动栏 -->
+		<view style='float: left' class='left'>
+			<scroll-view scroll-y scroll-with-animation scroll-left="{{scrollLength}}" class='scrollY'
+				style='height: {{winHeight}}px'>
+				<view>
+					<block wx:key="tabs" wx:for="{{tabs}}">
+						<view bindtap='jumpIndex' data-menuindex='{{index}}' data-tabType='{{item.tabType}}'>
+							<view class="text-style {{indexId==index?' activeView':''}}">
+
+<view class="left-img-text">
+									<image src="{{item.tabImg}}" class="item-img"></image>
+								<text class="{{indexId==index?'active1':''}}">{{item.tabTypename}}</text>
+</view>
+
+							</view>
+						</view>
+					</block>
+				</view>
+			</scroll-view>
+    </view>
+    
+		<view class="right" style='height: {{winHeight}}rpx;width:calc(100% - 200rpx);'>
+			<scroll-view scroll-y scroll-with-animation scroll-left="{{scrollLength}}" bindscroll="scrollToLeft"
+				scroll-into-view="{{toTitle}}" class='scrollRight' style='height: {{winHeight}}px'>
+				<block wx:key="tabs" wx:for="{{tabs}}" wx:for-item="itemft"> 
+					<view id="view-{{itemft.tabType}}">
+						<view class="title" id="title-{{itemft.tabType}}">{{itemft.tabTypename}}</view>
+						<view class="orders" wx:for="{{tabsList}}" wx:key="tabsList" wx:for-item="itemf">
+							<view wx:if="{{itemf.tabType==itemft.tabType}}" style="height:180rpx;border-bottom:1rpx solid #F0F0F0;width:96%;margin:20rpx auto;">
+								<image src="{{itemf.productImg}}" bindtap="toDetail" data-id="{{itemf.productId}}" data-tabType="{{itemf.tabType}}" style="width:160rpx;height:160rpx;float:left;"></image>
+								<view style="width:calc(100% - 180rpx);float:right;height:160rpx;">
+									<view
+										style="height:40rpx;line-height:40rpx;margin-top:5rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+										{{itemf.productName}}</view>
+									<view
+										style="height:40rpx;line-height:40rpx;margin-top:15rpx;font-size:24rpx;color:#c2c2c2;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+										<text style="color:red;">会员价：{{itemf.productPriceNow
+	
+										}}￥</text></view>
+									<view style="height:40rpx;line-height:40rpx;margin-top:15rpx;">
+										<text
+											style="color:#c2c2c2;font-size:24rpx;">售价：{{itemf.productPrice}}￥</text>
+										<!-- 加号 -->
+										<image src="../image/add.png" data-id="{{itemf.productId}}" 
+											bindtap="addCart" style="float:right;height:50rpx;width:50rpx;margin-right: 10rpx;"></image>
+										<!-- 数量 -->
+										<text style="float:right;height:50rpx;padding:0rpx 10rpx;line-height: 50rpx;" class="value"
+											hidden="{{itemf.quantity<=0}}" data-id="{{itemf.productId}}"
+											data-num="{{itemf.quantity}}">{{itemf.quantity}}</text>
+										<!-- 减号 -->
+										<image src="../image/jian.png" hidden="{{itemf.quantity<=0}}"
+											data-id="{{itemf.productId}}" bindtap="delCart" style="float:right;height:50rpx;width:50rpx;"></image>
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</block>
+			</scroll-view>
+		</view>
+	</view>
+	<!-- 底部下单 -->
+	<view class="bottom_box">
+		<view class="shop_cartBox" bindtap="cascadeToggle">
+            <text wx:if="{{totalNum!=0}}" style="float: right;width: 40rpx;height: 40rpx;border-radius: 50rpx;background-color:red;text-align: center;margin-right: -10rpx;margin-top: -10rpx;color: white;line-height: 40rpx;padding: 2rpx;">{{totalNum}}</text>
+			<image class="shopCart_img" src="../image/gwc.png"></image>
+		</view>
+		<view class="all_money">总计：{{totalPrice}}元，{{totalNum}}件</view>
+		<view class="choose_ok color-block" bindtap="gotoOrder">提交</view>
+	</view>
+	<!--购物车弹窗  -->
+	<view hidden="{{maskFlag}}" class="modal-mask" bindtap="cascadeToggle"></view>
+	<view animation="{{animationData}}" class="cart_popup">
+		<view class="shopcart_title"><span class="shopcart_close" bindtap="cascadeToggle">返回</span>
+        <span class="shopcart_deleteAll" bindtap="cleanList">清空</span></view>
+		<scroll-view scroll-y style="height:250px;margin-top:35px">
+            <view wx:if="{{cartList.length===0}}" style="text-align: center;color: gray;margin-top: 40rpx;">~空空如也！~</view>
+			<block wx:for="{{cartList}}" wx:key="item">
+				<view class="cart_cells" wx:if="{{item.quantity > 0}}">
+                    <image src="{{item.productImg}}" data-id="{{item.productId}}" style="width:80rpx;height:80rpx;float:left;margin: 10rpx 10rpx;"></image>
+					<view class="cells_name" style="font-size:28rpx;color:gray;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;" data-index="{{index}}">{{item.productName}}</view>
+					<view class="cells_price" data-index="{{index}}">特价:{{item.productPriceNow}}￥<text style="color:gray;margin-left: 10rpx;">售价:{{item.productPrice}}￥</text></view>
+					<view class="price-box">
+						<!-- 减号 -->
+						<image src="../image/reduce.png" hidden="{{item.quantity<=0}}"
+							data-id="{{item.productId}}" bindtap="delCart" style="float:right;height:50rpx;width:50rpx;margin-top: 10rpx;"></image>
+						<!-- 数量 -->
+						<text style="float:right;height:50rpx;padding:0rpx 10rpx;margin-top: 10rpx;line-height: 50rpx;" class="value" hidden="{{item.quantity<=0}}"
+							data-id="{{item.productId}}" data-num="{{item.quantity}}">{{item.quantity}}</text>
+						<!-- 加号 -->
+						<image src="../image/add.png" data-id="{{item.productId}}" bindtap="addCart"
+							style="float:right;height:50rpx;width:50rpx;margin-top: 10rpx;"></image>
+					</view>
+					<icon class="shopcart_delete" type="clear" size="24" data-index="{{index}}" data-id="{{item.productId}}" bindtap="deleteOne" />
+				</view>
+			</block>
+		</scroll-view>
+	</view>
+</view>
