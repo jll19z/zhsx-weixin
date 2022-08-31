@@ -1,0 +1,28 @@
+<!--pages/userInfo/Userinfo.wxml-->
+<view>
+  <view>地址信息设置</view>
+
+
+    <radio-group class="radio-group" bindchange="radioChange">
+      <radio class="radio" wx:for-items="{{userInfoList}}" wx:key="id" value="{{item.id}}" checked="{{item.checked}}">
+      <view class="info">
+        <view class="info-item">
+        <view>地址: {{item.userAddress}}</view>
+        <view>电话：{{item.userPhone}}</view>
+      </view>
+      <image src="../image/edit.png" class="edit-img" bindtap="infoEdit">   </image>
+      </view>
+   
+      </radio>
+    </radio-group>
+   
+<view >
+  <image src="../image/addressadd.png" class="btn-a" bindtap="infoEdit">   </image>
+</view>
+<view class="bottom_box">
+  <view class="bottom_text" bindtap="infoOk">确认地址</view>
+</view>
+
+
+
+</view>

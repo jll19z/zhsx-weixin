@@ -1,0 +1,56 @@
+/* pages/orderInfo/orderInfo.wxss */
+
+.title{
+  font-size: 50rpx;
+  text-align: center;
+  background-color: rgb(248, 222, 191);
+}
+.order-con{
+
+  border: 2px solid rgb(230, 230, 230);
+  box-shadow: 0px 0px 10px #e7e5e5;
+  border-radius: 30rpx;
+  
+  display: flex;
+  height: 400rpx;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 20rpx;
+  flex-direction: column;
+}
+
+
+.order-no{
+  /* background-color: red; */
+}
+.order-info{
+  /* background-color: blue; */
+  height: 230rpx;
+  display: flex;
+
+}
+
+.order-info image{
+  width:230rpx;
+  height:230rpx;
+  float:left;
+  margin: 0 10rpx;
+  
+}
+
+.order-bottom{
+  margin-top: 10rpx;
+  /* background-color: chartreuse; */
+  height: 100rpx;
+  display: flex;
+}
+
+.order-bottom view{
+/* background-color: chocolate; */
+margin: auto;
+}
+
+.btn{
+  background-color: rgb(238, 158, 138);
+  height: 80rpx;
+
+}

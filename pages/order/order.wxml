@@ -1,0 +1,27 @@
+<!--pages/order/order.wxml-->
+
+<view class="orders" wx:for="{{tabsList}}" wx:key="tabsList" wx:for-item="itemf">
+							
+              <image src="{{itemf.productImg}}" bindtap="toDetail" data-id="{{itemf.productId}}" data-tabType="{{itemf.tabType}}" style="width:160rpx;height:160rpx;float:left;"></image>
+              <view style="width:calc(100% - 180rpx);float:right;height:160rpx;">
+                <view
+                  style="height:40rpx;line-height:40rpx;margin-top:5rpx;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                  {{itemf.productName}}</view>
+                <view
+                  style="height:40rpx;line-height:40rpx;margin-top:15rpx;font-size:24rpx;color:#c2c2c2;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                  <text style="color:red;">特价：{{itemf.productPriceNow}}￥</text></view>
+                <view style="height:40rpx;line-height:40rpx;margin-top:15rpx;">
+                  <text
+                    style="color:#c2c2c2;font-size:24rpx;">售价：{{itemf.productPrice}}￥</text>
+                
+                </view>
+              </view>
+          
+          </view>
+
+
+<view class="bottom_box">
+  <view class="all_money">总计：{{totalPrice}}元，{{totalNum}}件</view>
+  <view class="choose_ok color-block" bindtap="OrderOk">确认订单</view>
+</view>
+

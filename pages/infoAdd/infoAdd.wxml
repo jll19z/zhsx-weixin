@@ -1,0 +1,26 @@
+
+<view class="text-c">
+  <text class="text">用户收货地址</text>
+</view>
+
+
+
+  <view class="page-section">
+    <view class="weui-cells__title">手机号：</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input"  maxlength="11" bindinput="bindKeyInput" placeholder="{{phone}}" />
+      </view>
+    </view>
+  </view>
+ 
+  <view class="page-section">
+    <view class="weui-cells__title">地址：</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input"   bindinput="bindKeyInput1" placeholder="{{address}}"/>
+      </view>
+    </view>
+  </view>
+
+  <button bindtap="infoOK" type="warn">确认信息</button>

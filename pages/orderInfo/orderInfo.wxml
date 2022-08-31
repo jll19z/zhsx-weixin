@@ -1,0 +1,32 @@
+<!--pages/orderInfo/orderInfo.wxml-->
+
+<view class="title">订单信息</view>
+
+<view wx:for="{{orderList}}" wx:for-item="item" class="order-con" wx:key="item.orderId" data-id="{{item.orderId}}">
+
+  <view class="order-no">
+    订单号:{{item.orderNo}}
+  </view>
+
+  <view class="order-info">
+    <view wx:for="{{item.children}}" wx:for-item="itemc" class="">
+
+      <image src="{{itemc.productImg}}"></image>
+
+    </view>
+  </view>
+
+  <view class="order-bottom">
+
+    <view>
+      支付状态:{{item.payStatus == 1 ? '已支付' : '未支付'}}</view>
+
+    <view>
+      订单状态:{{item.orderStatus == 1 ? '已配送' : '未配送'}}</view>
+
+    <button size="mini" class="btn" wx:if="{{item.payStatus == 0}}" bindtap='goPay' data-id='{{item.orderId}}'>支付</button>
+    <button size="mini" class="btn"  bindtap='deleteOr' data-id='{{item.orderNo}}'>删除</button>
+  </view>
+
+
+</view>

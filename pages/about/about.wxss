@@ -1,0 +1,50 @@
+/* pages/about/about.wxss */
+.container1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+}
+
+.avatar{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.name{
+margin-bottom: 30rpx;
+}
+
+.text{
+  font-size: 30rpx;
+  color:rgb(214, 194, 214);
+}
+.longinText{
+  color: rgb(80, 216, 80);
+}
+
+
+/* css画箭头 */
+.right-arrow{
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+  position: absolute;
+  right: 15px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  }
+  
+  .item{
+    display: flex;
+    padding: 20rpx;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+    margin-top: 5rpx;
+  }
+
+
+

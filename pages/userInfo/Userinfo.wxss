@@ -1,0 +1,56 @@
+/* pages/userInfo/Userinfo.wxss */
+.radio-group {
+    border-bottom: 1px solid #ddd;
+  }
+  .radio {
+      display: block;
+      border-top: 1px solid #ddd;
+      padding: 5px;
+  }
+
+  .info{
+    display: flex;
+  }
+  .info-item{
+    /* background-color: red; */
+    width: 500rpx;
+  }
+  
+  .info-btn{
+    margin: auto;
+  }
+
+
+
+  .bottom_box {
+    width: 100%;
+    height: 120rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0px;
+    background-color: rgb(56, 211, 108);
+  }
+  .btn-a{
+    position: fixed;
+    right: 0;
+    bottom: 80px;
+    width: 120rpx;
+    height: 120rpx;
+  }
+
+  .bottom_text{
+    text-align: center ;
+    font-size: x-large;
+    line-height: 120rpx;
+  }
+
+  .btn-edit{
+    right: 0px;
+  }
+
+  .edit-img{
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 50rpx;
+  }
+

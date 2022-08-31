@@ -1,0 +1,12 @@
+/* pages/userInfo/Userinfo.wxss */
+@import "../lib/weui.wxss";
+.page-section{
+  margin-bottom: 20rpx;
+}
+
+
+.text-c{
+  font-size: 50rpx;
+  text-align: center;
+
+  }
